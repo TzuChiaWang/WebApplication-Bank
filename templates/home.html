@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to NTUST Bank</title>
+</head>
+<body>
+    <h1>Welcome to NTUST Bank</h1>
+    <h2>Here is our online banking system. </h2>
+    <h2>Features we offer:</h2>
+    <ul>
+        <li>View account balances</li>
+        <li>Deposit money</li>
+        <li>Transfer money between accounts, Please use Account Name!</li>
+        <li>Secure login and registration</li>
+    </ul>
+    <h2>Please <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">register</a> to get started.</h2>
+    <p><a href="{{ url_for('reset_db') }}">Reset Database</a></p>
+
+    
+     <!-- 顯示 flash 訊息 -->
+     {% with messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+         <ul class="flashes">
+             {% for category, message in messages %}
+                 <li class="{{ category }}">{{ message }}</li>
+             {% endfor %}
+         </ul>
+     {% endif %}
+ {% endwith %}
+ 
+</body>
+</html>

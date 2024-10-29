@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer</title>
+</head>
+<body>
+     <!-- 顯示 flash 訊息 -->
+     {% with messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+         <ul class="flashes">
+             {% for category, message in messages %}
+                 <li class="{{ category }}">{{ message }}</li>
+             {% endfor %}
+         </ul>
+     {% endif %}
+ {% endwith %}
+ 
+ <h2>Transfer Money</h2>
+ <form method="POST" action="{{ url_for('transfer') }}">
+     {{ form.hidden_tag() }}
+     <p>
+         {{ form.to_account.label }}<br>
+         {{ form.to_account(size=32) }}<br>
+         {% for error in form.to_account.errors %}
+             <span style="color: red;">[{{ error }}]</span>
+         {% endfor %}
+     </p>
+     <p>
+         {{ form.amount.label }}<br>
+         {{ form.amount(size=32) }}<br>
+         {% for error in form.amount.errors %}
+             <span style="color: red;">[{{ error }}]</span>
+         {% endfor %}
+     </p>
+     <p>{{ form.submit() }}</p>
+     <a href="{{ url_for('dashboard') }}">Dashboard</a> 
+ </form>
+</body>
+</html>
