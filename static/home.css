@@ -1,0 +1,135 @@
+/* static/home.css */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.home-container {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    margin-bottom: 24px;
+    color: #202124;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #202124;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+ul li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.flashes {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.flashes li {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.flashes .error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.flashes .success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.highlight {
+    margin-top: 20px;
+}
+
+.form-button {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 10px;
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-button:hover {
+    background-color: #1558b0;
+    transform: scale(1.02);
+}
+
+.form-button:active {
+    transform: scale(0.98);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .home-container {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    ul li {
+        font-size: 14px;
+    }
+
+    .form-button {
+        font-size: 14px;
+    }
+}

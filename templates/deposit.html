@@ -3,31 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Deposit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='deposit.css') }}">
 </head>
 <body>
-    <!-- 顯示 flash 訊息 -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <ul class="flashes">
-                {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
+    <div class="deposit-container">
+        <!-- 顯示 flash 訊息 -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
+        <h2>Deposit</h2>
+        <form method="POST" action="{{ url_for('deposit') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <label class="form-label" for="amount">{{ form.amount.label }}</label>
+                {{ form.amount(class="form-input", id="amount") }}
+                {% for error in form.amount.errors %}
+                    <div class="error">[{{ error }}]</div>
                 {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-    
-    <h2>Deposit</h2>
-    <form method="POST" action="{{ url_for('deposit') }}">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.amount.label }}<br>
-            {{ form.amount(size=32) }}<br>
-            {% for error in form.amount.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-        <a href="{{ url_for('dashboard') }}">Dashboard</a> 
-    </form>
+            </div>
+            <button type="submit" class="form-button">{{ form.submit.label.text }}</button>
+        </form>
+        <a href="{{ url_for('dashboard') }}" class="home-link">Dashboard</a>
+    </div>
 </body>
 </html>

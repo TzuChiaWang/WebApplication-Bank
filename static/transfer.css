@@ -1,0 +1,143 @@
+/* static/transfer.css */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.transfer-container {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 24px;
+    color: #202124;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 5px rgba(26, 115, 232, 0.4);
+    outline: none;
+}
+
+.form-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-button:hover {
+    background-color: #1558b0;
+    transform: scale(1.02);
+}
+
+.form-button:active {
+    transform: scale(0.98);
+}
+
+.error {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: -10px;
+    text-align: left;
+}
+
+.home-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.home-link:hover {
+    text-decoration: underline;
+}
+
+.flashes {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.flashes li {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.flashes .error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.flashes .success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .transfer-container {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+
+    .form-input {
+        font-size: 14px;
+    }
+
+    .form-button {
+        font-size: 14px;
+    }
+}

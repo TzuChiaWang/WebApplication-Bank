@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
 </head>
 <body>
-    <h1>Dashboard</h1> 
-    <a href="{{ url_for('logout') }}">Logout</a>
-    <h2>Accounts</h2>
-    <ul>
-        {% for account in accounts %}
-            <li>Account ID: {{ account.id }} - Name: {{ account.name }} - Balance: ${{ account.balance }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{{ url_for('transfer') }}">Transfer Money</a> | 
-    <a href="{{ url_for('deposit') }}">Deposit Money</a>
+    <div class="dashboard-container">
+        <h1>Dashboard</h1>
+        <h2>Accounts</h2>
+        <ul class="accounts-list">
+            {% for account in accounts %}
+                <li>Account ID: {{ account.id }} - Name: {{ account.name }} - Balance: ${{ account.balance }}</li>
+            {% endfor %}
+        </ul>
+        <div class="actions">
+            <a href="{{ url_for('transfer') }}" class="form-button">Transfer Money</a> | 
+            <a href="{{ url_for('deposit') }}" class="form-button">Deposit Money</a>
+        </div>
+        <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+    </div>
 </body>
 </html>
