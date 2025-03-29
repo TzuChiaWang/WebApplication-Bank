@@ -1,17 +1,131 @@
-https://webapplication-bank.onrender.com
+# WebApplication-Bank
 
-NTUST Bank
+一個使用 Flask 和 SQLAlchemy 實作的簡單銀行網頁應用程式。
 
-有一個歡迎頁面，
+## 功能特點
+- 使用者帳戶管理
+- 存款和提款功能
+- 轉帳服務
+- 交易紀錄查詢
+- 帳戶餘額顯示
+- 安全性驗證
 
-頁面內容簡介此銀行系統功能包括：
+## 技術架構
+- Frontend：
+  - HTML5
+  - CSS3
+  - JavaScript
+  - Bootstrap 5
+- Backend：
+  - Python Flask
+  - SQLAlchemy ORM
+- 資料庫：
+  - SQLite（開發環境）
+  - PostgreSQL（生產環境）
 
-1.查詢餘額
-2.存錢功能
-3.轉帳功能
-4.使用者註冊及登入
+## 安裝說明
+1. 克隆專案
+```bash
+git clone https://github.com/TzuChiaWang/WebApplication-Bank.git
+cd WebApplication-Bank
+```
 
-首頁有清除資料庫資料功能。
+2. 建立虛擬環境
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/macOS
+# 或
+venv\Scripts\activate  # Windows
+```
+
+3. 安裝依賴
+```bash
+pip install -r requirements.txt
+```
+
+4. 設定環境變數
+```bash
+cp .env.example .env
+# 編輯 .env 文件設定必要的環境變數
+```
+
+5. 初始化資料庫
+```bash
+flask db upgrade
+```
+
+6. 啟動應用程式
+```bash
+flask run
+```
+
+## 系統需求
+- Python 3.8+
+- pip
+- 虛擬環境工具（venv）
+- PostgreSQL（選用）
+
+## API 文件
+### 使用者相關
+- POST /api/users/register - 註冊新使用者
+- POST /api/users/login - 使用者登入
+- GET /api/users/profile - 取得使用者資料
+
+### 帳戶相關
+- GET /api/accounts - 取得帳戶資訊
+- POST /api/accounts/deposit - 存款
+- POST /api/accounts/withdraw - 提款
+- POST /api/accounts/transfer - 轉帳
+
+### 交易相關
+- GET /api/transactions - 取得交易紀錄
+- GET /api/transactions/{id} - 取得特定交易詳情
+
+## 開發指南
+1. 遵循 PEP 8 程式碼規範
+2. 使用 Black 進行程式碼格式化
+3. 撰寫單元測試
+4. 遵循 Git Flow 開發流程
+
+## 資料庫結構
+```sql
+-- 使用者表
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY,
+    username VARCHAR(64) UNIQUE NOT NULL,
+    email VARCHAR(120) UNIQUE NOT NULL,
+    password_hash VARCHAR(128) NOT NULL
+);
+
+-- 帳戶表
+CREATE TABLE accounts (
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    balance DECIMAL(10,2) NOT NULL DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+-- 交易表
+CREATE TABLE transactions (
+    id INTEGER PRIMARY KEY,
+    account_id INTEGER NOT NULL,
+    type VARCHAR(20) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    timestamp DATETIME NOT NULL,
+    FOREIGN KEY (account_id) REFERENCES accounts (id)
+);
+```
+
+## 安全性考量
+- 密碼雜湊處理
+- CSRF 防護
+- SQL 注入防護
+- XSS 防護
+- 使用者認證與授權
+- 敏感資料加密
+
+## 授權
+MIT License
 
 
 
